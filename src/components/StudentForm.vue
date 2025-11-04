@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card class="mb-6 elevation-4">
-      <v-card-title class="text-h5 font-weight-bold mb-4" style="color: #3f51b5">
+      <v-card-title class="text-h5 font-weight-bold mb-4 py-4" style="color: #3f51b5">
         {{ editingStudent.id ? 'Edit Student Details' : 'Add New Student' }}
       </v-card-title>
       <v-card-text>
@@ -27,7 +27,7 @@
                 v-model="editingStudent.rollNumber"
                 :disabled="!!editingStudent.id"
                 prepend-icon="mdi-numeric"
-              ></v-text-field>
+              />
             </v-col>
             <v-col cols="12" md="4">
               <v-select
@@ -41,11 +41,11 @@
             </v-col>
             <v-col cols="12" md="4">
               <v-select
+                v-model="editingStudent.year"
                 :items="yearOptions"
                 label="Year"
                 :rules="[rules.required]"
                 variant="outlined"
-                v-model="editingStudent.year"
                 :disabled="!!editingStudent.id"
                 prepend-icon="mdi-chart-box-outline"
               ></v-select>
@@ -82,8 +82,9 @@
                 color="error"
                 variant="text"
                 class="border border-error border-md bg-red-lighten-5 px-4 font-weight-bold"
-                >{{ editingStudent.id ? 'Cancel' : 'Reset' }}</v-btn
               >
+                {{ editingStudent.id ? 'Cancel' : 'Reset' }}
+              </v-btn>
             </v-card-actions>
           </v-row>
         </v-form>
@@ -103,10 +104,11 @@
 </template>
 
 <script setup>
-import StudentTable from './StudentTable.vue'
-import StudentDetail from './StudentDetail.vue'
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
+
+import StudentTable from './StudentTable.vue'
+import StudentDetail from './StudentDetail.vue'
 
 const API_URL = 'http://localhost:8092/students'
 
@@ -131,7 +133,6 @@ const fetchStudents = async () => {
   try {
     const response = await axios.get(API_URL)
     students.value = response.data
-    console.log(students)
   } catch (error) {
     console.error('Fetch failed:', error)
   } finally {

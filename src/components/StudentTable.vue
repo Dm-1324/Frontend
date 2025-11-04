@@ -4,7 +4,7 @@
       Student List
     </v-card-title>
 
-    <template v-if="students && students.length > 0">
+    <template v-if="students?.length > 0">
       <v-data-table :headers="headers" :items="students" item-key="id" class="elevation-1 pa-1">
         <template v-slot:[`item.marks`]="{ item }">
           <v-chip :color="item.marks >= 90 ? 'green' : 'blue'" small>
@@ -18,6 +18,7 @@
               item.status === 'ACTIVE' ? 'blue' : item.status === 'GRADUATED' ? 'green' : 'red'
             "
             small
+            :variant="'tonal'"
           >
             {{ item.status }}
           </v-chip>

@@ -12,8 +12,8 @@
                 <v-list-item-title><strong>ID:</strong> {{ student.id }}</v-list-item-title>
               </v-list-item>
               <v-list-item>
-                <v-list-item-title
-                  ><strong>Roll Number:</strong> {{ student.rollNumber }}</v-list-item-title
+                <v-list-item-title>
+                  <strong>Roll Number:</strong> {{ student.rollNumber }}</v-list-item-title
                 >
               </v-list-item>
               <v-list-item>
@@ -49,8 +49,8 @@
           color="#3f51b5"
           class="border border-md px-4 font-weight-bold"
           @click="$emit('close-detail')"
-          >Close</v-btn
-        >
+          >Close
+        </v-btn>
       </v-card-actions>
     </v-card>
     <div v-else>Loading...</div>
