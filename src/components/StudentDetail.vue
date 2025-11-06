@@ -39,7 +39,7 @@
             <v-avatar size="200" color="#b2b9e1" class="mb-4">
               <v-icon size="128" color="#3f51b5">mdi-account</v-icon>
             </v-avatar>
-            <p class="font-weight-bold text-h5">{{ student.name }}</p>
+            <p class="font-weight-bold text-h5 text-uppercase">{{ student.name }}</p>
           </v-col>
         </v-row>
       </v-card-text>
